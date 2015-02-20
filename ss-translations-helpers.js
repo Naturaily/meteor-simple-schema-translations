@@ -6,17 +6,17 @@ function pairToRegexObject(pair) {
   var obj = {msg: pair[1]};
 
   if (pair[0] !== "default")
-    obj.exp = SimpleSchema.Regex[pair[0]];
+    obj.exp = SimpleSchema.RegEx[pair[0]];
 
   return obj;
 }
 
 function parseRegexMessages(obj) {
   var messagesChain = _.chain(obj).clone();
-  
+
   messagesChain.pairs().map(pairToRegexObject);
 
-  return messages.value();
+  return messagesChain.value();
 }
 
 function changeRegexMessages(messages, regexMessages) {
@@ -41,5 +41,8 @@ translateErrorMessages = function (messages) {
 };
 
 translateLabels = function (labels) {
-  
+  _.each(_.pairs(labels), function(pair) {
+    schema = window[pair[0]];
+    schema.labels(pair[1]);
+  });
 };
