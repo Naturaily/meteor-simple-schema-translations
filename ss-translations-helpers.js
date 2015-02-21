@@ -14,13 +14,7 @@ function pairToRegexObject(pair) {
 function parseRegexMessages(obj) {
   var messagesChain = _.chain(obj).clone();
 
-  messagesChain.pairs().map(pairToRegexObject);
-
-  return messagesChain.value();
-}
-
-function changeRegexMessages(messages, regexMessages) {
-  
+  return messagesChain.pairs().map(pairToRegexObject).value();
 }
 
 function getSchema(name) {
@@ -40,10 +34,9 @@ translateErrorMessages = function (messages) {
   var regexMessages;
 
   if (typeof messages === "object") {
-    regexMessages = parseRegexMessages(messages.regex);
-    messages = _.omit(messages, "regex");
-    messages = _.extend({}, originalMessages, messages);
-    changeRegexMessages(messages, regexMessages);
+    messages.regEx = parseRegexMessages(messages.regex);
+    messages       = _.omit(messages, "regex");
+    messages       = _.extend({}, originalMessages, messages);
   } else {
     messages = originalMessages;
   }
