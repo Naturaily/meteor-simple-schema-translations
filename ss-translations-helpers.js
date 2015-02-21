@@ -23,6 +23,17 @@ function changeRegexMessages(messages, regexMessages) {
   
 }
 
+function getSchema(name) {
+  schema = window;
+
+  _.each(name.split('.'), function(name){
+    schema = schema[name];
+  });
+
+  if(schema === window) return null;
+  else return schema;
+}
+
 // PUBLIC FUNCTIONS (to use inside of the package)
 
 translateErrorMessages = function (messages) {
@@ -42,7 +53,7 @@ translateErrorMessages = function (messages) {
 
 translateLabels = function (labels) {
   _.each(_.pairs(labels), function(pair) {
-    schema = window[pair[0]];
+    schema = getSchema(pair[0]);
     schema.labels(pair[1]);
   });
 };
