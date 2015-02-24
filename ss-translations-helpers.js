@@ -45,7 +45,7 @@ translateErrorMessages = function (messages) {
 };
 
 translateLabels = function (labels) {
-  _.each(_.pairs(labels), function(pair) {
+  _.chain(labels).pairs().each(function(pair) {
     schema = getSchema(pair[0]);
     schema.labels(pair[1]);
   });
