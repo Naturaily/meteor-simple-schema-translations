@@ -34,9 +34,11 @@ translateErrorMessages = function (messages) {
   var regexMessages;
 
   if (typeof messages === "object") {
-    messages.regEx = parseRegexMessages(messages.regex);
-    messages       = _.omit(messages, "regex");
-    messages       = _.extend({}, originalMessages, messages);
+    if (messages.regex) {
+      messages.regEx = parseRegexMessages(messages.regex);
+      messages = _.omit(messages, "regex");
+    }
+    messages = _.extend({}, originalMessages, messages);
   } else {
     messages = originalMessages;
   }
@@ -45,8 +47,10 @@ translateErrorMessages = function (messages) {
 };
 
 translateLabels = function (labels) {
-  _.chain(labels).pairs().each(function(pair) {
-    schema = getSchema(pair[0]);
-    schema.labels(pair[1]);
-  });
+  if (typeof labels === "object") {
+    _.chain(labels).pairs().each(function(pair) {
+      schema = getSchema(pair[0]);
+      schema.labels(pair[1]);
+    });
+  }
 };

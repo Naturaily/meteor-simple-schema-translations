@@ -1,7 +1,7 @@
 Package.describe({
   name: "naturaily:simple-schema-translations",
   summary: "Translations for aldeed:simple-schema (tap:i18n integration).",
-  version: "0.0.1",
+  version: "0.1.0",
   git: " /* Fill me in! */ "
 });
 
