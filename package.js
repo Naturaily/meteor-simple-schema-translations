@@ -3,7 +3,7 @@ Package.describe({
   summary: "Translations for aldeed:simple-schema (tap:i18n integration).",
   version: "0.1.0",
   documentation: "README.md",
-  git: "git@github.com:Naturaily/meteor-simple-schema-translations.git"
+  git: "https://github.com/Naturaily/meteor-simple-schema-translations.git"
 });
 
 Package.onUse(function(api) {
