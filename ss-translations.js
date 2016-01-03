@@ -6,7 +6,7 @@ Meteor.startup(function () {
   });
 
   Tracker.autorun(function () {
-    translateErrorMessages(TAPi18n.__("simple_schema.errors"));
-    translateLabels(TAPi18n.__("simple_schema.labels"));
+    translateErrorMessages(TAPi18n.__("simpleSchema.errors"));
+    translateLabels(TAPi18n.__("simpleSchema.labels"));
   });
 });

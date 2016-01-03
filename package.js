@@ -2,7 +2,7 @@ Package.describe({
   name: "naturaily:simple-schema-translations",
   summary: "Translations for aldeed:simple-schema (tap:i18n integration).",
   version: "0.1.0",
-  git: " /* Fill me in! */ "
+  git: "git@github.com:Naturaily/meteor-simple-schema-translations.git"
 });
 
 Package.onUse(function(api) {
